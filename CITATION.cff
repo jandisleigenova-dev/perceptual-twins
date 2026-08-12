@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this replication kit, please cite the accompanying Perceptual Twins preprint."
+title: "Perceptual Twins Replication Kit"
+version: "1.0"
+date-released: "2026-08-12"
+authors:
+  - family-names: "Genova"
+    given-names: "Jandislei Antonio"
+preferred-citation:
+  type: article
+  title: "Testing Task-Relative Epistemic Autonomy in Artificial Agents: The Perceptual Twins Benchmark"
+  subtitle: "A yoked causal framework with a synthetic estimand-recovery study"
+  authors:
+    - family-names: "Genova"
+      given-names: "Jandislei Antonio"
+  year: 2026
+  notes: "Independent preprint, version 2.1.1, 5 August 2026; not peer reviewed."
