@@ -1,0 +1,123 @@
+{
+  "study": "Perceptual Twins minimal synthetic estimand-recovery study",
+  "scope": "Resettable one-step microenvironment; not a full benchmark validation",
+  "configuration": {
+    "seed": 20260805,
+    "n_finite": 600,
+    "n_reference": 20000,
+    "n_bootstrap": 1000,
+    "revision_steps": 12,
+    "fault_steps": 10,
+    "revision_noise": 0.1,
+    "fault_hit": 0.8,
+    "fault_false_alarm": 0.2,
+    "prior_new_rule": 0.1
+  },
+  "all_reference_values_covered": true,
+  "finite_sample_condition_estimates": {
+    "gated_revision_recovery": {
+      "A": 0.7662627701431146,
+      "B_E": 0.18586604729073355,
+      "C_E": 0.513653447679634,
+      "D": 0.1914031072502506,
+      "E": 0.513653447679634
+    },
+    "fault_macro_f1": {
+      "A": 0.8313795577114089,
+      "B_E": 0.22049396447631012,
+      "C_E": 0.7270556086781961,
+      "D": 0.10945809092867917,
+      "E": 0.7270556086781961
+    }
+  },
+  "reference_condition_estimates": {
+    "gated_revision_recovery": {
+      "A": 0.7633075279167171,
+      "B_E": 0.19582125178844406,
+      "C_E": 0.5263817863347103,
+      "D": 0.1984491613598269,
+      "E": 0.5263817863347103
+    },
+    "fault_macro_f1": {
+      "A": 0.8399969845192196,
+      "B_E": 0.20453479877034547,
+      "C_E": 0.7250281704475774,
+      "D": 0.13703793682600035,
+      "E": 0.7250281704475774
+    }
+  },
+  "results": [
+    {
+      "outcome": "gated_revision_recovery",
+      "contrast": "tau_tag",
+      "estimate": 0.3277874003889004,
+      "ci_low": 0.30406677655796016,
+      "ci_high": 0.35097679610759497,
+      "monte_carlo_reference": 0.3305605345462663,
+      "reference_covered": true
+    },
+    {
+      "outcome": "gated_revision_recovery",
+      "contrast": "tau_select",
+      "estimate": 0.25260932246348067,
+      "ci_low": 0.23249730284413186,
+      "ci_high": 0.27165461462471935,
+      "monte_carlo_reference": 0.2369257415820067,
+      "reference_covered": true
+    },
+    {
+      "outcome": "gated_revision_recovery",
+      "contrast": "tau_couple",
+      "estimate": 0.32225034042938333,
+      "ci_low": 0.2973248091158259,
+      "ci_high": 0.3477092793456556,
+      "monte_carlo_reference": 0.3279326249748835,
+      "reference_covered": true
+    },
+    {
+      "outcome": "gated_revision_recovery",
+      "contrast": "delta_exec_eq",
+      "estimate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "monte_carlo_reference": 0.0,
+      "reference_covered": true
+    },
+    {
+      "outcome": "fault_macro_f1",
+      "contrast": "tau_tag",
+      "estimate": 0.506561644201886,
+      "ci_low": 0.4575776181180547,
+      "ci_high": 0.5580321379459262,
+      "monte_carlo_reference": 0.520493371677232,
+      "reference_covered": true
+    },
+    {
+      "outcome": "fault_macro_f1",
+      "contrast": "tau_select",
+      "estimate": 0.10432394903321285,
+      "ci_low": 0.06163956396990694,
+      "ci_high": 0.1489774674490055,
+      "monte_carlo_reference": 0.11496881407164217,
+      "reference_covered": true
+    },
+    {
+      "outcome": "fault_macro_f1",
+      "contrast": "tau_couple",
+      "estimate": 0.6175975177495169,
+      "ci_low": 0.5771302875597596,
+      "ci_high": 0.6557567298701058,
+      "monte_carlo_reference": 0.587990233621577,
+      "reference_covered": true
+    },
+    {
+      "outcome": "fault_macro_f1",
+      "contrast": "delta_exec_eq",
+      "estimate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "monte_carlo_reference": 0.0,
+      "reference_covered": true
+    }
+  ]
+}

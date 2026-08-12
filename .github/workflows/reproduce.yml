@@ -1,0 +1,22 @@
+name: Reproduce reference study
+
+on:
+  push:
+    branches: [main, release-v1.0]
+  pull_request:
+    branches: [main]
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r reference_implementation/requirements.txt
+      - name: Reproduce published outputs
+        run: python scripts/verify_reproduction.py

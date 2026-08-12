@@ -1,0 +1,18 @@
+Perceptual Twins Benchmark — Reference Implementation and Replication Kit
+Copyright © 2026 Jandislei Antonio Genova
+
+Original benchmark concept, experimental design, accompanying manuscript,
+reference implementation, and replication materials by Jandislei Antonio Genova,
+Independent Researcher, São Paulo, Brazil.
+
+Software components identified in RIGHTS_AND_LICENSING.md are licensed under
+the Apache License, Version 2.0.
+
+Academic and scientific users are requested to cite the accompanying manuscript:
+Jandislei Antonio Genova, "Testing Task-Relative Epistemic Autonomy in Artificial
+Agents: The Perceptual Twins Benchmark", independent preprint, version 2.1.1,
+5 August 2026.
+
+This NOTICE is informational and does not add conditions to the Apache License.
+No endorsement by the author is implied by use, modification, replication,
+publication of positive or negative results, or creation of derivative software.
