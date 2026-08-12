@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Minimal synthetic estimand-recovery study for the Perceptual Twins design.
 
-The implementation is deliberately small. It tests whether three paired causal
+The implementation is deliberately small.  It tests whether three paired causal
 contrasts and one implementation-equivalence diagnostic are recoverable in a
-resettable one-step microenvironment. It does not validate the full benchmark
+resettable one-step microenvironment.  It does not validate the full benchmark
 or establish epistemic autonomy.
 """
 
@@ -15,7 +15,7 @@ import json
 import math
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 import numpy as np
 
@@ -95,10 +95,11 @@ def revision_likelihood(y: int, x: int, context: int, action: int, h: int, noise
 
 def simulate_revision_anchor(rng: np.random.Generator, cfg: StudyConfig) -> dict[str, float]:
     n = cfg.revision_steps
+    # Balanced contexts make A and E use the same number and cost of probes.
     context = balanced_binary(rng, n)
     x = balanced_binary(rng, n)
     command_e = balanced_binary(rng, n)
-    action_a = context.copy()
+    action_a = context.copy()  # probe exactly where H0 and H1 disagree
     action_d = restricted_permutation(rng, command_e, max_match_rate=0.25)
     u = rng.random(n)
 
@@ -108,7 +109,7 @@ def simulate_revision_anchor(rng: np.random.Generator, cfg: StudyConfig) -> dict
             if executed[t] == 0:
                 p[t] = 0.5
             else:
-                causal_class = x[t] ^ context[t]
+                causal_class = x[t] ^ context[t]  # post-change H1 is true
                 p[t] = (1.0 - cfg.revision_noise) if causal_class else cfg.revision_noise
         return (u < p).astype(int)
 
@@ -121,6 +122,7 @@ def simulate_revision_anchor(rng: np.random.Generator, cfg: StudyConfig) -> dict
         area = 0.0
         for t in range(n):
             if integrate_action:
+                # The replay policy is preregistered as balanced and independent of x/context.
                 l0 = 0.5 * revision_likelihood(y[t], x[t], context[t], 0, 0, cfg.revision_noise)
                 l0 += 0.5 * revision_likelihood(y[t], x[t], context[t], 1, 0, cfg.revision_noise)
                 l1 = 0.5 * revision_likelihood(y[t], x[t], context[t], 0, 1, cfg.revision_noise)
@@ -132,6 +134,7 @@ def simulate_revision_anchor(rng: np.random.Generator, cfg: StudyConfig) -> dict
                 l1 = revision_likelihood(y[t], x[t], context[t], a, 1, cfg.revision_noise)
             p_h1 = posterior_binary(p_h1, l0, l1)
             area += p_h1
+        # The recovery area is gated by the correct final split/merge rule.
         return (area / n) if p_h1 > 0.5 else 0.0
 
     e = learn(y_e, command_e, integrate_action=False)
@@ -200,6 +203,7 @@ def simulate_fault_anchor(rng: np.random.Generator, cfg: StudyConfig) -> tuple[i
         return int(rng.choice(winners))
 
     def learn_untagged() -> int:
+        # With a balanced hidden diagnostic policy, p(y|F) is identical for all F.
         return int(rng.integers(0, 5))
 
     def learn_active() -> int:
@@ -267,7 +271,9 @@ def estimate(dataset: dict[str, object], indices: np.ndarray | None = None) -> d
     return out
 
 
-def bootstrap_intervals(dataset: dict[str, object], cfg: StudyConfig) -> dict[str, dict[str, tuple[float, float]]]:
+def bootstrap_intervals(
+    dataset: dict[str, object], cfg: StudyConfig
+) -> dict[str, dict[str, tuple[float, float]]]:
     rng = np.random.default_rng(cfg.seed + 91)
     n = len(dataset["fault_true"])
     draws = {
@@ -289,7 +295,11 @@ def bootstrap_intervals(dataset: dict[str, object], cfg: StudyConfig) -> dict[st
     }
 
 
-def flatten_results(finite, reference, intervals) -> list[dict[str, object]]:
+def flatten_results(
+    finite: dict[str, dict[str, float]],
+    reference: dict[str, dict[str, float]],
+    intervals: dict[str, dict[str, tuple[float, float]]],
+) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     for outcome in finite:
         for contrast in CONTRASTS:
