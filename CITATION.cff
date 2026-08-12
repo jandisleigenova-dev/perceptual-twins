@@ -1,8 +1,11 @@
 cff-version: 1.2.0
-message: "If you use this replication kit, please cite the accompanying Perceptual Twins preprint."
+message: "If you use this replication kit, please cite the software record and the accompanying Perceptual Twins preprint where relevant."
 title: "Perceptual Twins Replication Kit"
 version: "1.0"
 date-released: "2026-08-12"
+doi: "10.5281/zenodo.21908918"
+repository-code: "https://github.com/jandisleigenova-dev/perceptual-twins"
+url: "https://doi.org/10.5281/zenodo.21908918"
 authors:
   - family-names: "Genova"
     given-names: "Jandislei Antonio"
