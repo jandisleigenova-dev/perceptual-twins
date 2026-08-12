@@ -1,0 +1,12 @@
+{
+  "seed": 20260805,
+  "n_finite": 600,
+  "n_reference": 20000,
+  "n_bootstrap": 1000,
+  "revision_steps": 12,
+  "fault_steps": 10,
+  "revision_noise": 0.1,
+  "fault_hit": 0.8,
+  "fault_false_alarm": 0.2,
+  "prior_new_rule": 0.1
+}
