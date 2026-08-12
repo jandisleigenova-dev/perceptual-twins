@@ -1,9 +1,13 @@
 # Perceptual Twins Replication Kit v1.0
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21908918.svg)](https://doi.org/10.5281/zenodo.21908918)
+
 **Accompanies:** *Testing Task-Relative Epistemic Autonomy in Artificial Agents: The Perceptual Twins Benchmark*  
 **Author:** Jandislei Antonio Genova — Independent Researcher, São Paulo, Brazil  
 **Article version:** 2.1.1 (5 August 2026)  
-**Kit version:** 1.0 (public release: 12 August 2026)
+**Kit version:** 1.0 (public release: 12 August 2026)  
+**Version DOI:** `10.5281/zenodo.21908918`  
+**All-versions DOI:** `10.5281/zenodo.21908917`
 
 ## What this kit is
 
@@ -85,13 +89,21 @@ The current synthetic study uses one transparent Bayesian learner and one synthe
 
 The next empirical target is the staged program described in the paper, beginning with extended simulation across multiple architectures and generator families.
 
+## Archival record and DOI
+
+Version 1.0 is archived on Zenodo under DOI **10.5281/zenodo.21908918**. The version-independent DOI **10.5281/zenodo.21908917** resolves to the latest archived version of the replication kit.
+
+Suggested software citation:
+
+> Genova, J. A. (2026). *Perceptual Twins Replication Kit v1.0* (Version 1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21908918
+
 ## INPI filing status
 
 The version 2.1.1 reference implementation was filed for software registration with Brazil's INPI on **12 August 2026** under process `512026006478-3`, petition `870260080966`. This statement describes a **filed registration request**, not a granted registration. See `docs/INPI_STATUS.md`.
 
 ## Citation
 
-See `CITATION.cff`.
+See `CITATION.cff`. Scientific use should cite the replication kit DOI and the accompanying Perceptual Twins preprint where relevant.
 
 ## Licensing
 
